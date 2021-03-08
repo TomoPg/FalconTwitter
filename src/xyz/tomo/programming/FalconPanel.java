@@ -8,7 +8,7 @@ public class FalconPanel extends JPanel {
     public BufferedImage image;
 
     public FalconPanel() {
-        super();
+            super();
         this.image = new BufferedImage(500,500,BufferedImage.TYPE_INT_BGR);
     }
 

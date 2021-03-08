@@ -21,9 +21,11 @@ public class Window extends JFrame{
                 }
             });
 
+            this.addKeyListener(new Keyboard());
+
             this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             this.setTitle("Falcon");
-            this.setSize(500,500);;
+            this.setSize(500,500);
             this.setLocationRelativeTo(null);
             this.setResizable(false);
             this.setVisible(true);
