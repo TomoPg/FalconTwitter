@@ -3,8 +3,6 @@ package xyz.tomo.programming;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-import static xyz.tomo.programming.EnumFalconScoreen.GAME_OVER;
-
 public class TwitterFalcon {
 
     public static Window window;
@@ -21,7 +19,6 @@ public class TwitterFalcon {
 
         long startTime;
         long fpsTime = 0;
-        long sleeps;
         int fps = 30;
         int FPS = 0;
         int FPSCount = 0;
@@ -59,39 +56,23 @@ public class TwitterFalcon {
                     break;
                 case GAME:
                     gra.setColor(Color.BLACK);
-                    font = new Font("SansSerif",Font.PLAIN,17);
+                    font = new Font("SansSerif",Font.PLAIN,30 );
                     gra.setFont(font);
                     metrics = gra.getFontMetrics(font);
-                    gra.drawString("入力したIDの非公開アカウントが見れるようになりました",240 - (metrics.stringWidth("入力したIDの非公開アカウントが見れるようになりました") / 2),100);
-
-                    gra.setColor(Color.BLACK);
-                    font = new Font("SansSerif",Font.PLAIN,17 );
-                    gra.setFont(font);
-                    metrics = gra.getFontMetrics(font);
-                    gra.drawString("ブラウザを開いて確認してください",240 - (metrics.stringWidth("ブラウザを開いて確認してください") / 2),150);
-
-                    try {
-                        gra.setColor(Color.BLACK);
-                        font = new Font("SansSerif",Font.PLAIN,17 );
-                        gra.setFont(font);
-                        metrics = gra.getFontMetrics(font);
-                        gra.drawString("解析中・・・",240 - (metrics.stringWidth("解析中・・・") / 2),170);
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        gra.setColor(Color.BLACK);
-                        font = new Font("SansSerif",Font.PLAIN,17 );
-                        gra.setFont(font);
-                        metrics = gra.getFontMetrics(font);
-                        gra.drawString("非公開アカウント解除中・・・",240 - (metrics.stringWidth("非公開アカウント解除中・・・") / 2),170);
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    gra.drawString("解析中・・・",240 - (metrics.stringWidth("解析中・・・") / 2),150);
+                    if (Keyboard.isKeyPressed(KeyEvent.VK_E)) {
+                        scoreen = EnumFalconScoreen.GAME_OVER;
                     }
                     break;
                 case GAME_OVER:
+                    gra.setColor(Color.BLACK);
+                    font = new Font("SansSerif",Font.PLAIN,30 );
+                    gra.setFont(font);
+                    metrics = gra.getFontMetrics(font);
+                    gra.drawString("鍵アカウントを突破しました",240 - (metrics.stringWidth("鍵アカウントを突破しました") / 2),150);
+                    if (Keyboard.isKeyPressed(KeyEvent.VK_R)) {
+                        System.exit(0);
+                    }
                     break;
             }
 
