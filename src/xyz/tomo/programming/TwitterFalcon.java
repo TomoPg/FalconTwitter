@@ -15,7 +15,20 @@ public class TwitterFalcon {
 
         EnumFalconScoreen scoreen = EnumFalconScoreen.START;
 
+        long startTime;
+        long fpsTime = 0;
+        int fps = 30;
+        int FPS = 0;
+        int FPSCount = 0;
         while (loop) {
+            if ((System.currentTimeMillis() - fpsTime) >= 1000) {
+                fpsTime = System.currentTimeMillis();
+                FPS = FPSCount;
+                FPSCount = 0;
+                System.out.println(FPS);
+            }
+            FPSCount++;
+            startTime = System.currentTimeMillis();
 
             gra.setColor(Color.WHITE);
             gra.fillRect(0,0,500,500);
@@ -41,13 +54,34 @@ public class TwitterFalcon {
                     break;
                 case GAME:
                     gra.setColor(Color.BLACK);
-                    font = new Font("SansSerif",Font.PLAIN,50);
+                    font = new Font("SansSerif",Font.PLAIN,17);
                     gra.setFont(font);
                     metrics = gra.getFontMetrics(font);
                     gra.drawString("入力したIDの非公開アカウントが見れるようになりました",240 - (metrics.stringWidth("入力したIDの非公開アカウントが見れるようになりました") / 2),100);
+
+                    gra.setColor(Color.BLACK);
+                    font = new Font("SansSerif",Font.PLAIN,17);
+                    gra.setFont(font);
+                    metrics = gra.getFontMetrics(font);
+                    gra.drawString("ブラウザを開いて確認してください",240 - (metrics.stringWidth("ブラウザを開いて確認してください") / 2),150);
                     break;
                 case GAME_OVER:
                     break;
+            }
+
+            gra.setColor(Color.BLACK);
+            gra.setFont(new Font("SansSerif",Font.PLAIN,10));
+            gra.drawString(FPS + "FPS",0,460);
+
+            window.panel.draw();
+
+            try {
+                long runTime = System.currentTimeMillis() - startTime;
+                if (runTime < (1000 / fps)) {
+                    Thread.sleep((1000 / fps) - (runTime));
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
