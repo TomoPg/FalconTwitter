@@ -8,6 +8,7 @@ public class TwitterFalcon {
     public static boolean loop;
 
     public static void main(String[] args) {
+
         window = new Window();
         loop = true;
 
@@ -60,7 +61,7 @@ public class TwitterFalcon {
                     gra.drawString("入力したIDの非公開アカウントが見れるようになりました",240 - (metrics.stringWidth("入力したIDの非公開アカウントが見れるようになりました") / 2),100);
 
                     gra.setColor(Color.BLACK);
-                    font = new Font("SansSerif",Font.PLAIN,17);
+                    font = new Font("SansSerif",Font.PLAIN,17 );
                     gra.setFont(font);
                     metrics = gra.getFontMetrics(font);
                     gra.drawString("ブラウザを開いて確認してください",240 - (metrics.stringWidth("ブラウザを開いて確認してください") / 2),150);
